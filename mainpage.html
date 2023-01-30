@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+        integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <style>
+        body {
+            background-color: rgb(29, 29, 29);
+
+        }
+
+        .container-fluid {
+            width: 100%;
+            background-color: #ffffff;
+
+        }
+
+        div.container-fluid>div.owl-carousel {
+            width: 100%;
+            height: 700px;
+        }
+
+        div.container-fluid>div.owl-carousel div.information_img {
+            width: 100%;
+            height: 100%;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+        }
+
+        div.container-fluid>div.owl-carousel div.information_img img {
+            max-width: 100%;
+            margin: auto;
+        }
+
+        .active {
+
+            opacity: 0.5;
+        }
+
+        .center {
+            opacity: 1;
+
+        }
+
+
+
+        .owl-dots {
+            text-align: center;
+        }
+
+        .owl-dots span {
+            position: relative;
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            display: block;
+            background: #fff;
+            margin: 0 5px;
+        }
+
+        #menu_bar {
+            position: relative;
+            width: 100%;
+            height: 100px;
+            margin-bottom: 20px;
+
+        }
+
+        .selection_bar {
+            position: relative;
+            background-color: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            height: 100%;
+            width: 100%;
+        }
+
+        div#menu_bar>.selection_bar>img {
+            /* width: 150px; */
+            height: 80%;
+            width: 10%;
+            position: absolute;
+            left: 10%;
+        }
+
+        div.selection_bar ul {
+            width: 70%;
+            height: 100%;
+            position: absolute;
+            top: calc(100% - 60px);
+            left: calc(100% - 70%);
+        }
+
+        div.selection_bar ul>li {
+            display: inline-block;
+            width: 10%;
+            color: #585858;
+            padding: 5px;
+            text-align: center;
+        }
+
+        div#menu_bar>div.selection_bar>.search {
+            position: absolute;
+            top: 20%;
+            right: 20px;
+            width: 30%;
+            height: 50px;
+            border: 2px solid white;
+            border-radius: 20px;
+            background-color: #D9DDDC;
+        }
+
+        div#menu_bar>div.selection_bar>.search>.chon_theloaiphim {
+            width: auto;
+            background-color: #D9DDDC;
+            display: inline;
+            float: left;
+            border: 0px;
+            text-align: center;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+
+        .search_loaiphim {
+            /* height: 93vh; */
+            width: 100%;
+            display: none;
+        }
+        .phim_khach_seach img{
+            width: 100%;
+            height: 375px;
+        }
+        div.search_loaiphim  .chon_phim{
+            width: 90%;
+            margin: auto;
+            text-align: center ;
+        }
+        div.search_loaiphim .phim_da_duoc_truy_suat{
+            width: 90%;
+            margin: auto;
+            text-align: center;
+        }
+        div.search_loaiphim  .chon_phim > select{
+            width: 20%;
+        }
+        .search_loaiphim_null {
+            height: 93vh;
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <!--menu-->
+        <div id="menu_bar">
+            <div class="selection_bar">
+                <img src="https://www.electriccinema.co.uk/wp-content/uploads/2018/02/logo_electric-1.png">
+                <ul>
+                    <li><a>Mua vé</a></li>
+                    <li><a>Phim</a></li>
+                    <li><a>Rạp/giá vé</a></li>
+                    <li><a>Membership</a></li>
+                    <li class="account"><a style="text-decoration: none;" href="login.html">Login</a></li>
+                </ul>
+                <button class="search">
+                    <input type="search" id="search_ten_phim" placeholder="Hãy Nhập vào Thể Loại Phim"
+                        style="width: 85%;border: none;background-color: #D9DDDC;float: left;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-search" viewBox="0 0 16 16">
+                        <path
+                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!--scroll-->
+        <div class="owl-carousel owl-carousel1 owl-theme">
+            <div class="information_img">
+                <img src="./Movies Website Img/img/coming1.jpg">
+            </div>
+            <div class="information_img">
+                <img src="./Movies Website Img/img/coming2.jpg">
+            </div>
+            <div class="information_img">
+                <img src="./Movies Website Img/img/coming4.jpg">
+            </div>
+            <div class="information_img">
+                <img src="./Movies Website Img/img/coming5.jpg">
+            </div>
+
+        </div>
+        <div  class="container">
+        <div class="search_loaiphim">
+                <div class="chon_phim">
+                    <select class="Chon_theloaiphim">
+                        <option>Thể Loại</option>
+                        <option value="Hành Động">Cao bồi</option>
+                        <option value="Kinh Dị">Kinh Dị</option>
+                        <option value="Hài">Hài</option>
+                    </select>
+                    <select class="chon_Quốc_Gia">
+                        <option>Quốc Gia</option>
+                        <option value="Hành Động">Việt Nam</option>
+                        <option value="Kinh Dị">Anh</option>
+                        <option value="Hài">Mỹ</option>
+                        <option value="Hài">Pháp</option>
+                    </select>
+                    <select class="chon_Đạo_Diễn">
+                        <option>Đạo Diễn</option>
+                        <option value="Hành Động">Anh</option>
+                        <option value="Kinh Dị">Đức</option>
+                        <option value="Hài">Bỉ</option>
+                    </select>
+                    <select class="chon_Năm">
+                        <option>Chọn Năm</option>
+                        <option value="Hành Động">2018</option>
+                        <option value="Kinh Dị">2019</option>
+                        <option value="Hài">2022</option>
+                    </select>
+                    <select class="chon_khoi_chieu">
+                        <option value="Hành Động">Đang Chiếu/Sắp Chiếu</option>
+                        <option value="Kinh Dị">Đang Chiếu</option>
+                        <option value="Hài">Sắp Chiếu</option>
+                    </select>
+            </div>
+            <div class="phim_da_duoc_truy_suat">
+                <div class="col-md-12 col-sm-4 col-xs-6">
+                    <div class="phim_khach_seach"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="search_loaiphim_null">
+        <button class="search">
+            <select class="Chon_theloaiphim">
+                <option>Thể Loại</option>
+                <option value="Hành Động">Cao bồi</option>
+                <option value="Kinh Dị">Kinh Dị</option>
+                <option value="Hài">Hài</option>
+            </select>
+            <select class="chon_Quốc_Gia">
+                <option>Quốc Gia</option>
+                <option value="Hành Động">Việt Nam</option>
+                <option value="Kinh Dị">Anh</option>
+                <option value="Hài">Mỹ</option>
+                <option value="Hài">Pháp</option>
+            </select>
+            <select class="chon_Đạo_Diễn">
+                <option>Đạo Diễn</option>
+                <option value="Hành Động">Anh</option>
+                <option value="Kinh Dị">Đức</option>
+                <option value="Hài">Bỉ</option>
+            </select>
+            <select class="chon_Năm">
+                <option>Chọn Năm</option>
+                <option value="Hành Động">2018</option>
+                <option value="Kinh Dị">2019</option>
+                <option value="Hài">2022</option>
+            </select>
+            <select class="chon_khoi_chieu">
+                <option value="Hành Động">Đang Chiếu/Sắp Chiếu</option>
+                <option value="Kinh Dị">Đang Chiếu</option>
+                <option value="Hài">Sắp Chiếu</option>
+            </select>
+        </button>
+        <h1></h1>
+    </div>
+    </div>
+</body>
+<script>
+    $(document).ready(function () {
+        $(".owl-theme").owlCarousel({
+            loop: true,
+            center: true,
+            margin: 100,
+            responsive: {
+                300: {
+                    items: 1,
+                    nav: true,
+                },
+                500: {
+                    items: 1,
+                    nav: true,
+                },
+                1000: {
+                    items: 3,
+                    nav: true,
+                }
+            }
+        });
+        $.getJSON("./php/checkloggedinuser.php", function (data) {
+            if (data == 1) {
+                let a = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16"><path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/><path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/></svg>';
+                // alert(a);
+                document.getElementsByClassName("account")[0].innerHTML = "<div class = 'dropdown'>"
+                    + '<div class = "name">Name</div>'
+                    + ' <div class="dropdown-content">'
+                    + "<a style='text-decoration: none;' href='./php/myaccount.php'>" + "My Account" + "</a>"
+                    + "<a style='text-decoration: none;' href='./php/checkout.php'>" + "Check out" + "</a>"
+                    + "</div>"
+                    + "</div>";
+            }
+
+        });
+        function chiasize(data){
+            document.getElementsByClassName("phim_khach_seach")[0].innerHTML = "";
+            $(".search_loaiphim").css("display", "inline-block");
+                for( var i = 0 ; i < data.length; i++){
+                    // appendChild : chèn thêm vào thẻ
+                    // createElement : tạo thêm thẻ  
+                    const div = document.createElement("div");
+                    const img = document.createElement("img");
+                        img.src = data[i][6];
+                        div.appendChild(img);
+                    div.classList.add("col-md-3");
+                        document.getElementsByClassName("phim_khach_seach")[0].classList.add("row");
+                        document.getElementsByClassName("phim_khach_seach")[0].appendChild(div);
+                    }
+                    
+                }
+        
+        $(".bi-search").click(function () {
+            let search_ten_phim = document.getElementById("search_ten_phim").value;
+            
+
+                $.ajax({
+                    type: "POST",
+                    url: "./php/ten_phim.php",
+                    data: {
+                        chon_ten_phim: $("#search_ten_phim").val()
+                    },
+                    success: function (data) {
+
+                        chiasize(data);
+                    }
+                })
+            });
+        });
+
+
+</script>
+
+</html>
